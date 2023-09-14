@@ -1,0 +1,39 @@
+﻿@inject HttpClient http;
+@page "/"
+<div class="row">
+      
+      <div class="col-12">
+        @if(Movies.Count == 0)
+        {
+            <p>You have no Movies</p>
+        }else
+        {
+            <MoviesSearchInput/>
+            <div class="row">
+                @foreach (var movie in Movies)
+                {
+                    <MovieCard Movie="movie" />
+                }
+
+            </div>
+           
+        }
+        
+    </div>
+</div>
+
+@code {
+    public List<MovieDto> Movies = new List<MovieDto>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            Movies = await http.GetFromJsonAsync<List<MovieDto>>("sample-data/Movies.json");
+
+        }catch(Exception ex)
+        {
+            Console.WriteLine("Could not fetch Fruits");
+        }
+    }
+}

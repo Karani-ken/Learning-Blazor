@@ -1,0 +1,45 @@
+﻿@page "/search/{searchTerm}"
+@inject HttpClient http;
+<h3>Searching for @searchTerm</h3>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Search</li>
+    </ol>
+</nav>
+@if(SearchedMovies.Count == 0)
+{
+    <p><i>No results Found!!!</i></p>
+    
+
+}
+else
+
+{
+    <div class="row">
+        @foreach (var movie in SearchedMovies)
+        {
+            <MovieCard Movie="movie" />
+        }
+
+    </div>
+}
+@code {
+    [Parameter]
+    public string searchTerm { get; set; }
+    public List<MovieDto> Movies = new List<MovieDto>();
+    public List<MovieDto> SearchedMovies = new List<MovieDto>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var AllMovies = await http.GetFromJsonAsync<List<MovieDto>>("sample-data/Movies.json");
+        if (AllMovies.Any())
+        {
+            Movies = AllMovies.Where(m => m.Title.ToLower().Contains(searchTerm.ToLower()) ||
+            m.Category.ToLower().Contains(searchTerm.ToLower())).ToList();
+
+            SearchedMovies = Movies;
+        }
+
+    }
+}

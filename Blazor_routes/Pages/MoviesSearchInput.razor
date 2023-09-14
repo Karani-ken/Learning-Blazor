@@ -1,0 +1,22 @@
+﻿@inject NavigationManager _manager;
+<div class="jumbotron">
+    <h1 class="display-4 text-center">Welcome to Electo Movies</h1>
+    <p class="lead text-center">Electric Movies for Electric People </p>
+    <p class="mt-4">
+      <input @onkeydown="SearchForMovie"
+          @bind="_searchTerm"
+          @bind:event="oninput"
+          type="text"
+          placeholder="Search for a Movie"
+          class="form-control form-control-lg"/>
+    </p>
+</div>
+
+@code {
+    private string _searchTerm = "";
+    private void SearchForMovie(KeyboardEventArgs args)
+    {
+        if (args.Key != "Enter") return;
+        _manager.NavigateTo($"/search/{_searchTerm}");
+    }
+}

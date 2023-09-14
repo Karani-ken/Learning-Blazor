@@ -1,0 +1,19 @@
+﻿<div class=" m-3 rounded-3 shadow-lg" style="width:300px; height:300px;">
+  
+        <img src="@Movie.Poster" style="width:100%; height:50%;"/>
+   
+    
+    <div class="row p-2">
+        <h5 style="font-size:15px; font-weight:bold;">Title:@Movie.Title</h5>
+        <p style="font-size:12px;">Category:@Movie.Category</p>
+        <p style="font-size:12px; font-weight:bold; color:green;">Rating:@Movie.Rating</p>
+        <div class="col-8">
+            <a href="@($"/movie/{Movie.Id}")" class="btn btn-primary">See more</a>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public  MovieDto Movie{ get; set; }
+}
