@@ -1,4 +1,5 @@
 ﻿@page "/search/{searchTerm}"
+@page "/search/{searchTerm}/Rating/{maxRating:int}"
 @inject HttpClient http;
 <h3>Searching for @searchTerm</h3>
 <nav aria-label="breadcrumb">
@@ -17,6 +18,7 @@ else
 
 {
     <div class="row">
+        <MoviesFilter searchTerm="@searchTerm"/>
         @foreach (var movie in SearchedMovies)
         {
             <MovieCard Movie="movie" />
@@ -27,6 +29,9 @@ else
 @code {
     [Parameter]
     public string searchTerm { get; set; }
+    [Parameter]
+    public int? MaxRating { get; set; }
+
     public List<MovieDto> Movies = new List<MovieDto>();
     public List<MovieDto> SearchedMovies = new List<MovieDto>();
 
@@ -41,5 +46,17 @@ else
             SearchedMovies = Movies;
         }
 
+    }
+    protected override void OnParametersSet()
+    {
+        if(MaxRating is not null && MaxRating > 0)
+        {
+            SearchedMovies = SearchedMovies.Where(m => m.Rating >= MaxRating).ToList();
+        }
+        else
+        {
+            SearchedMovies = Movies;
+        }
+       
     }
 }

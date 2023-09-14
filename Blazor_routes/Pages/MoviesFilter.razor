@@ -1,0 +1,33 @@
+﻿@inject NavigationManager _manager;
+<div class="filters">
+ 
+    <label for="Rating">Max Rating</label>
+    <input id="MaxRating"
+        type="number"
+        class="form-control"
+        @bind="_maxRating"/>   
+    <button class="btn btn-outline-primary" @onclick="FilterSearchResults">
+        Filter
+    </button>
+    <button class="btn btn-outline-secondary" @onclick="ClearSearchFilter">
+        Clear
+    </button>
+</div>
+
+@code {
+    private int _maxRating=0;
+
+    [Parameter, EditorRequired]
+    public string searchTerm { get; set; }
+
+    public void FilterSearchResults()
+    {
+        _manager.NavigateTo($"/search/{searchTerm}/Rating/{_maxRating}");
+    }
+    public void ClearSearchFilter()
+    {
+        _maxRating = 0;
+        _manager.NavigateTo($"/search/{searchTerm}");
+    }
+
+}

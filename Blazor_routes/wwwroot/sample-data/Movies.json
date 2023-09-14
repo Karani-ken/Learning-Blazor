@@ -17,7 +17,7 @@
     "Id": 3,
     "Title": "Justice League",
     "Category": "Sci-Fi",
-    "Rating": 6,
+    "Rating": 4,
     "Poster": "https://moviejabber.co.ke/wp-content/uploads/2017/03/Justice-League-1.jpg"
   },
   {
@@ -38,21 +38,21 @@
     "Id": 6,
     "Title": "Pirates of the Carribbean",
     "Category": "Adventure, Comedy, Action",
-    "Rating": 9,
+    "Rating": 5,
     "Poster": "https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/C6AB0EDCE8F41882EBBB782B76DD4F05D7E360D7C3F23B4F6D02C24699B26105/scale?width=1200&aspectRatio=1.78&format=jpeg"
   },
   {
     "Id": 7,
     "Title": "Zootopia",
     "Category": "Animation,Kids",
-    "Rating": 9,
+    "Rating": 2,
     "Poster": "https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/E6B18CBABD91FA221F1C1B55E6AB862A4E6F5423304D74D90594E4A31237E252/scale?width=1200&aspectRatio=1.78&format=jpeg"
   },
   {
     "Id": 8,
     "Title": "Money Heist",
     "Category": "Action, Crime",
-    "Rating": 9,
+    "Rating": 1,
     "Poster": "https://i0.wp.com/thsindex.org/wp-content/uploads/2023/04/Money-Heist-was-first-released-on-Antena-3-in-Spain-in-2017-Netflix.jpg?fit=1920%2C2560&ssl=1"
   }
 
